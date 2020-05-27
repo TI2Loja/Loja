@@ -14,6 +14,7 @@ namespace Loja.Models
         
         public string role { get; set; }
 
+        public string username { get; set; }
         [Required(ErrorMessage = "O Nome é de preenchimento obrigatório")]
         [StringLength(40, ErrorMessage = "O {0} não pode ter mais de {1} carateres.")]
         [RegularExpression("[A-ZÓÂÍ][a-zçáéíóúàèìòùãõäëïöüâêîôûñ]+(( | d[ao](s)? | e |-|'| d')[A-ZÓÂÍ][a-zçáéíóúàèìòùãõäëïöüâêîôûñ]+){1,3}",
@@ -29,5 +30,7 @@ namespace Loja.Models
         public string address { get; set; }
 
         public DateTime Inc_date { get; set; }
+
+       
     }
 }

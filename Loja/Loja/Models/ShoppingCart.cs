@@ -10,8 +10,11 @@ namespace Loja.Models
     public class ShoppingCart
     {
         
-        [ForeignKey(nameof(Users))]
-        public int user_id { get; set; }
+        [ForeignKey(nameof(Product))]
+        public int prod_id { get; set; }
+
+        [ForeignKey(nameof(Order))]
+        public int order_id { get; set; }
 
         public int quant { get; set; }
 

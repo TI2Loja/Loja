@@ -9,8 +9,8 @@ namespace Loja.Models
 {
     public class Payment
     {
-        [ForeignKey(nameof(Users))]
-        public int user_id { get; set; }
+        [Key]
+        public int _id { get; set; }
 
         public decimal total { get; set; }
 
