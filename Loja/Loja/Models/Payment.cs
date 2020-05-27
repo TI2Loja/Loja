@@ -10,7 +10,7 @@ namespace Loja.Models
     public class Payment
     {
         [Key]
-        public int _id { get; set; }
+        public int id { get; set; }
 
         public decimal total { get; set; }
 
