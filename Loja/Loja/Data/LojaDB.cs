@@ -18,10 +18,10 @@ namespace Loja.Data
 
 
         // adicionar as 'tabelas' à BD
-        public DbSet<Order> Animais { get; set; }
-        public DbSet<Payment> Donos { get; set; }
-        public DbSet<Product> Veterinarios { get; set; }
-        public DbSet<Users> Consultas { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Payment> Pament { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Users> User { get; set; }
 
     }
 }
