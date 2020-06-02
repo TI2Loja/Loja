@@ -1,13 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Loja.Models;
+using System.Text;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Loja.Data
 {
-    public class LojaDB : DbContext
+    public class LojaDB : IdentityDbContext
     {
         /// <summary>
         /// Construtor da classe
@@ -17,7 +16,7 @@ namespace Loja.Data
         public LojaDB(DbContextOptions<LojaDB> options) : base(options) { }
 
 
-        // adicionar as 'tabelas' à BD
+        //adicionar as 'tabelas' à BD
         public DbSet<Order> Order { get; set; }
         public DbSet<Payment> Payment { get; set; }
         public DbSet<Product> Product { get; set; }
