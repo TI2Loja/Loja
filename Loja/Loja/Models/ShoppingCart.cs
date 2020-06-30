@@ -9,7 +9,6 @@ namespace Loja.Models
 {
     public class ShoppingCart
     {
-        
         [ForeignKey(nameof(Product))]
         public int prod_id { get; set; }
 
