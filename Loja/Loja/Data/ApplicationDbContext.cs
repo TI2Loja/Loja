@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Loja.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Loja.Data
 {
