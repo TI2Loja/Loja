@@ -22,6 +22,7 @@ namespace Loja.Data
         public DbSet<Payment> Payment { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Loja.Models.ShoppingCart> ShoppingCart { get; set; }
 
     }
 }

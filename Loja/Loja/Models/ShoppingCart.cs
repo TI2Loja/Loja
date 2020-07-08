@@ -9,6 +9,10 @@ namespace Loja.Models
 {
     public class ShoppingCart
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [ForeignKey(nameof(Product))]
         public int prod_id { get; set; }
 

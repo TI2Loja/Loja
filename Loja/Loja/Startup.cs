@@ -34,6 +34,7 @@ namespace Loja
                 .AddEntityFrameworkStores<LojaDB>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,10 +61,10 @@ namespace Loja
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Users}/{action=Index}/{id?}");
+            endpoints.MapRazorPages();
             });
         }
     }

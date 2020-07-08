@@ -17,7 +17,9 @@ namespace Loja.Models
 
         public string description { get; set; }
 
-        public decimal price { get; set; }
+        public double price { get; set; }
+
+        public string foto { get; set; }
 
     }
 }

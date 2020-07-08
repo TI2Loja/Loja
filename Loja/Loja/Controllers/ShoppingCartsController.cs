@@ -10,22 +10,22 @@ using Loja.Models;
 
 namespace Loja.Controllers
 {
-    public class ProductsController : Controller
+    public class ShoppingCartsController : Controller
     {
         private readonly LojaDB _context;
 
-        public ProductsController(LojaDB context)
+        public ShoppingCartsController(LojaDB context)
         {
             _context = context;
         }
 
-        // GET: Products
+        // GET: ShoppingCarts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            return View(await _context.ShoppingCart.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: ShoppingCarts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Loja.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (product == null)
+            var shoppingCart = await _context.ShoppingCart
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (shoppingCart == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(shoppingCart);
         }
 
-        // GET: Products/Create
+        // GET: ShoppingCarts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: ShoppingCarts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,item,stock,description,price,foto")] Product product)
+        public async Task<IActionResult> Create([Bind("ID,prod_id,order_id,quant,total")] ShoppingCart shoppingCart)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(shoppingCart);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(shoppingCart);
         }
 
-        // GET: Products/Edit/5
+        // GET: ShoppingCarts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Loja.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
-            if (product == null)
+            var shoppingCart = await _context.ShoppingCart.FindAsync(id);
+            if (shoppingCart == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(shoppingCart);
         }
 
-        // POST: Products/Edit/5
+        // POST: ShoppingCarts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,item,stock,description,price,foto")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,prod_id,order_id,quant,total")] ShoppingCart shoppingCart)
         {
-            if (id != product.id)
+            if (id != shoppingCart.ID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Loja.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(shoppingCart);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.id))
+                    if (!ShoppingCartExists(shoppingCart.ID))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Loja.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(shoppingCart);
         }
 
-        // GET: Products/Delete/5
+        // GET: ShoppingCarts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Loja.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (product == null)
+            var shoppingCart = await _context.ShoppingCart
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (shoppingCart == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(shoppingCart);
         }
 
-        // POST: Products/Delete/5
+        // POST: ShoppingCarts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Product.FindAsync(id);
-            _context.Product.Remove(product);
+            var shoppingCart = await _context.ShoppingCart.FindAsync(id);
+            _context.ShoppingCart.Remove(shoppingCart);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool ShoppingCartExists(int id)
         {
-            return _context.Product.Any(e => e.id == id);
+            return _context.ShoppingCart.Any(e => e.ID == id);
         }
     }
 }
